@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'CSS/mystyle.css' %}" />
+  </head>
+  <body>
+    <h1>Hi welcome tto Django</h1>
+    <h2>here are your access records</h2>
+
+    <div class="djangtwo">
+      {% if access_records %}
+      <table>
+        <thead>
+          <th>Site Name</th>
+          <th>Date accessed</th>
+        </thead>
+        {% for acc in access_records %}
+        <tr>
+          <td>{{ acc.name }}</td>
+          <td>{{ acc.date }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <p>NO access records found</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" />
+    <title>Your Name</title>
+  </head>
+  <body>
+    <h1>This is the picture of the MC in your name</h1>
+    <img src="{% static 'images/HELO.jpg' %}" alt="did not show :()" />
+  </body>
+</html> -->

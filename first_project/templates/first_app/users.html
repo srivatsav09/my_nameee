@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'CSS/mystyle.css' %}" />
+  </head>
+  <body>
+    <h1>this is the users page</h1>
+    <h2>below shows the list of users and their email ids</h2>
+
+    <div class="djangtwo">
+      {% if users %}
+      <table>
+        <thead>
+          <th>first name</th>
+          <th>last name</th>
+          <th>email id</th>
+        </thead>
+        {% for acc in users %}
+        <tr>
+          <td>{{ acc.first_name }}</td>
+          <td>{{ acc.last_name }}</td>
+          <td>{{ acc.email }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <p>NO access records found</p>
+      {% endif %}
+    </div>
+  </body>
+</html>
