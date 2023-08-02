@@ -11,8 +11,15 @@ def index(request):
     #date_dict = {'access_records':webpages_list}
     #my_dict = {'insert_me' : "Hello i am from views.py!"}
     #return render(request,'first_app/index.html',context=date_dict)
-    return render(request,'first_app/index.html')
+    context_dict = {'text':'hello world','number':100}
+    return render(request,'first_app/index.html',context_dict)
     # return render(request,'first_app/index.html')
+
+def other(request):
+    return render(request,'first_app/other.html')
+
+def relative(request):
+    return render(request,'first_app/rel_templates.html')
 
 def users(request):
 
