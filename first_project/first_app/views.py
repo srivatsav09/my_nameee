@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 #from first_app.models import Topic,Webpage,AccessRecord,User
 from . import forms
-from first_app.forms import NewUserForm
+#from first_app.forms import NewUserForm
 # Create your views here.
 
 

@@ -6,10 +6,12 @@ app_name = 'first_app'
 
 
 urlpatterns = [
+    path('Registration/',views.registration,name='registration')
+    
     #path('',views.index,name='index'),
     #path('admin/',views.index,name='index'),
     #path('help/',views.help,name = 'help'), 
     #path('',views.users,name='users'),
-    path('rel/',views.relative,name='relative'),
-    path('other/',views.other,name='other')
+    #path('rel/',views.relative,name='relative'),
+    #path('other/',views.other,name='other')
 ]
