@@ -1,7 +1,12 @@
 from django.shortcuts import render
-#from django.http import HttpResponse
+from django.http import HttpResponseRedirect,HttpResponse
+
 #from first_app.models import Topic,Webpage,AccessRecord,User
+
+from django.contrib.auth import authenticate,login,logout
 from first_app.forms import UserForm,UserProfileImfoForm
+from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from . import forms
 #from first_app.forms import NewUserForm
@@ -10,6 +15,11 @@ from . import forms
 
 def index(request):
     return render(request,'first_app/index.html')
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('index'))
 
 def registration(request):
     registered = False
@@ -43,6 +53,27 @@ def registration(request):
                    'profile_form':profile_form,
                    'registered':registered})
 
+
+def user_login(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username = username,password = password)
+
+        if user:
+            if user.is_active:
+                login(request,user)
+                return HttpResponseRedirect(reverse('index'))
+            else:
+                return HttpResponse("Account not active")
+        else:
+            print("someone tried to login and failed")
+            print("Username: {} and password {}".format(username,password))
+            return HttpResponse("invalid login details provided!!")
+    else:
+        return render(request,'first_app/login.html',{})
 
 # def index(request):
 #     #webpages_list = AccessRecord.objects.order_by('date')

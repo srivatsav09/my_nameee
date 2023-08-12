@@ -6,8 +6,8 @@ app_name = 'first_app'
 
 
 urlpatterns = [
-    path('Registration/',views.registration,name='registration')
-    
+    path('Registration/',views.registration,name='registration'),
+    path('user_login/',views.user_login,name='user_login')
     #path('',views.index,name='index'),
     #path('admin/',views.index,name='index'),
     #path('help/',views.help,name = 'help'), 
