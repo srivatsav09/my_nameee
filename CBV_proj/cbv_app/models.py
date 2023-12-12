@@ -22,4 +22,11 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CSV(models.Model):
+    BookId = models.IntegerField()
+    title = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    rating = models.FloatField()
     
